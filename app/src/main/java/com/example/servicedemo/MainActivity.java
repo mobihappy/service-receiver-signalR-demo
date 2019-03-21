@@ -5,26 +5,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.hardware.usb.UsbManager;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements MyReceiver.ConnectionListener {
     private MyService mService;
     private MyReceiver myReceiver;
     private Intent intent;
     private TextView tvNoInternet;
+    private TextView tvUsbConnect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvNoInternet = findViewById(R.id.tvNoInternet);
+        tvUsbConnect = findViewById(R.id.tvUsbConnect);
         myReceiver = new MyReceiver();
-        IntentFilter filter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        filter.addAction(Intent.ACTION_BATTERY_CHANGED);
         registerReceiver(myReceiver, filter);
     }
 
@@ -82,5 +88,9 @@ public class MainActivity extends AppCompatActivity implements MyReceiver.Connec
         }
     }
 
-
+    @Override
+    public void showUsbConnect(String status) {
+        tvUsbConnect.setVisibility(View.VISIBLE);
+        tvUsbConnect.setText(status);
+    }
 }
