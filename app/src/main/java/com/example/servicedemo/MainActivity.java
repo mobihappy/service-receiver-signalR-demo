@@ -59,6 +59,21 @@ public class MainActivity extends AppCompatActivity implements MyReceiver.Connec
         startActivity(intent);
     }
 
+    public void startClick(View view){
+        Intent intent = new Intent(this,StartServiceActivity.class);
+        startActivity(intent);
+    }
+
+    public void boundClick(View view){
+        Intent intent = new Intent(this,BoundServiceActivity.class);
+        startActivity(intent);
+    }
+
+    public void intentClick(View view){
+        Intent intent = new Intent(this,IntentServiceActivity.class);
+        startActivity(intent);
+    }
+
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {

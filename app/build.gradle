@@ -44,4 +44,5 @@ dependencies {
     implementation files('libs/gson-2.3.1.jar')
     implementation files('libs/signalr-client-sdk-android.jar')
     implementation files('libs/signalr-client-sdk.jar')
+    implementation 'org.jetbrains:annotations-java5:15.0'
 }

@@ -37,6 +37,36 @@
         app:layout_constraintTop_toBottomOf="@+id/btnBind"
         android:onClick="phone"/>
 
+    <Button
+        android:id="@+id/btnStartService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="StartServiece"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPhone"
+        android:onClick="startClick"/>
+
+    <Button
+        android:id="@+id/btnBoundService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BoundServiece"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStartService"
+        android:onClick="boundClick"/>
+
+    <Button
+        android:id="@+id/btnIntentService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IntentServiece"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBoundService"
+        android:onClick="intentClick"/>
+
     <TextView
         android:id="@+id/tvNoInternet"
         android:textColor="#FFFFFF"
