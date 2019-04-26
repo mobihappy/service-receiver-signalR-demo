@@ -59,7 +59,7 @@ public class MyService extends Service {
         sendBroadcast(intent);
     }
 
-    public class LocalBinder extends Binder{
+    class LocalBinder extends Binder{
         MyService getService(){
             return MyService.this;
         }

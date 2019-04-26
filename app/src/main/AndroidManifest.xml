@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.servicedemo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,17 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".kotlin.Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".MyService"
-            android:stopWithTask="false"/>
+        <activity android:name=".MainActivity">
+
+        </activity>
+
+        <service
+            android:name=".MyService"
+            android:stopWithTask="false" />
 
         <receiver android:name=".MyReceiver">
+            <intent-filter>
+                <action android:name="restartService" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".kotlin.MyService"
+            android:stopWithTask="false"/>
+        <receiver android:name=".kotlin.MyReceiver">
             <intent-filter>
                 <action android:name="restartService"/>
             </intent-filter>
