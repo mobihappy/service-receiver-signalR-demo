@@ -85,11 +85,6 @@ public class MyService extends Service {
 
         String CLIENT_METHOD_BROADAST_MESSAGE = "broadcastMessage";
         mHubProxy.on(CLIENT_METHOD_BROADAST_MESSAGE,
-                new SubscriptionHandler2<String, String>() {
-                    @Override
-                    public void run(final String name, final String msg) {
-                        new NotificationHelper(MyService.this).createNotification(name, msg);
-                    }
-                }, String.class,String.class);
+                (name, msg) -> new NotificationHelper(MyService.this).createNotification(name, msg), String.class,String.class);
     }
 }
