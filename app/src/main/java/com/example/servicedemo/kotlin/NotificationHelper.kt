@@ -7,7 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.provider.Settings
-import android.support.v4.app.NotificationCompat
+import androidx.core.app.NotificationCompat
 import com.example.servicedemo.R
 
 @Suppress("DEPRECATION")
@@ -17,7 +17,7 @@ class NotificationHelper(val context: Context) {
     private val NOTIFICATION_CHANNEL_ID = "10001"
 
     fun CreateNotification(title: String, message: String) {
-        val resultIntent = Intent(context, Main2Activity::class.java)
+        val resultIntent = Intent(context, InosChatActivity::class.java)
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         val resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         mBuilder = NotificationCompat.Builder(context)

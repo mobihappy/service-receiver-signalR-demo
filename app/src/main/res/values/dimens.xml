@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_bottom_menu">48dp</dimen>
+    <dimen name="size_icon_bottom_menu">40dp</dimen>
+    <dimen name="height_toolbar">48dp</dimen>
+    <dimen name="height_header_month">40dp</dimen>
+    <dimen name="margin_component">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="avatar_size">48dp</dimen>
+    <dimen name="text_size_large">17sp</dimen>
+    <dimen name="icon_event_create_size">22dp</dimen>
+    <dimen name="hour_textview_size">60dp</dimen>
+</resources>

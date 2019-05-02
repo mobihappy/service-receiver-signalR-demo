@@ -13,32 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".kotlin.Main2Activity">
+        <activity android:name=".kotlin.InosChatActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".kotlin.Main2Activity">
 
         </activity>
 
         <service
-            android:name=".MyService"
+            android:name=".kotlin.MyService"
             android:stopWithTask="false" />
 
-        <receiver android:name=".MyReceiver">
-            <intent-filter>
-                <action android:name="restartService" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name=".kotlin.MyService"
-            android:stopWithTask="false"/>
         <receiver android:name=".kotlin.MyReceiver">
             <intent-filter>
-                <action android:name="restartService"/>
+                <action android:name="restartService" />
             </intent-filter>
         </receiver>
     </application>

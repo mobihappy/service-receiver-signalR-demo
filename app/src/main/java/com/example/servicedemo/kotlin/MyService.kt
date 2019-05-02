@@ -12,9 +12,11 @@ import microsoft.aspnet.signalr.client.hubs.HubProxy
 import microsoft.aspnet.signalr.client.transport.ServerSentEventsTransport
 import java.util.concurrent.ExecutionException
 
+
 class MyService : Service() {
     private lateinit var mHubConnection: HubConnection
     private lateinit var mHubProxy: HubProxy
+    private val mBinder = LocalBinder()
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         startSignalR()
@@ -24,7 +26,7 @@ class MyService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? {
         startSignalR()
-        return LocalBinder()
+        return mBinder
     }
 
     override fun onDestroy() {
@@ -37,10 +39,9 @@ class MyService : Service() {
         sendBroadcast(intent)
     }
 
-    class LocalBinder : Binder() {
-        fun getService(): MyService {
-            return MyService()
-        }
+    fun sendMessage_To(receiverName: String, message: String) {
+        val SERVER_METHOD_SEND_TO = "send"
+        mHubProxy.invoke(SERVER_METHOD_SEND_TO, receiverName, message)
     }
 
     private fun startSignalR() {
@@ -57,10 +58,20 @@ class MyService : Service() {
             Log.d("SimpleSignalR", e.toString())
             return
         }
+
         val CLIENT_METHOD_BROADAST_MESSAGE = "broadcastMessage"
+
+//        mHubProxy.on(CLIENT_METHOD_BROADAST_MESSAGE,
+//                { name, msg ->  }, String::class.java, String::class.java)
+
         mHubProxy.on(CLIENT_METHOD_BROADAST_MESSAGE,
                 { name, msg -> NotificationHelper(this@MyService).CreateNotification(name, msg) }, String::class.java, String::class.java)
+
     }
 
-
+    inner class LocalBinder : Binder() {
+        fun getService():MyService {
+            return this@MyService
+        }
+    }
 }
