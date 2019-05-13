@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.hardware.usb.UsbManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements MyReceiver.ConnectionListener {
     private MyService mService;
@@ -39,38 +37,35 @@ public class MainActivity extends AppCompatActivity implements MyReceiver.Connec
         super.onResume();
     }
 
-    public void startService(View view){
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
+    public void startService(View view) {
+
                 intent = new Intent(MainActivity.this, MyService.class);
                 startService(intent);
-            }
-        });
+
     }
 
-    public void bindService(View view){
+    public void bindService(View view) {
         Intent intent = new Intent(this, MyService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
-    public void phone(View view){
-        Intent intent = new Intent(this,PhoneActivity.class);
+    public void phone(View view) {
+        Intent intent = new Intent(this, PhoneActivity.class);
         startActivity(intent);
     }
 
-    public void startClick(View view){
-        Intent intent = new Intent(this,StartServiceActivity.class);
+    public void startClick(View view) {
+        Intent intent = new Intent(this, StartServiceActivity.class);
         startActivity(intent);
     }
 
-    public void boundClick(View view){
-        Intent intent = new Intent(this,BoundServiceActivity.class);
+    public void boundClick(View view) {
+        Intent intent = new Intent(this, BoundServiceActivity.class);
         startActivity(intent);
     }
 
-    public void intentClick(View view){
-        Intent intent = new Intent(this,IntentServiceActivity.class);
+    public void intentClick(View view) {
+        Intent intent = new Intent(this, IntentServiceActivity.class);
         startActivity(intent);
     }
 
@@ -96,9 +91,9 @@ public class MainActivity extends AppCompatActivity implements MyReceiver.Connec
 
     @Override
     public void showNoInternet(boolean isConnect) {
-        if (isConnect){
+        if (isConnect) {
             tvNoInternet.setVisibility(View.GONE);
-        }else {
+        } else {
             tvNoInternet.setVisibility(View.VISIBLE);
         }
     }
